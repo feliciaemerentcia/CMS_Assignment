@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var rootContent = Umbraco.ContentAtRoot();
+    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+    var contactAdress = siteSettings?.ContactAdress;
+    var companyEmail = siteSettings?.ContactEmail;
+    var companyNumber = siteSettings?.ContactPhone;
+}
+
+<section class="bg-white-100">
+    <div class="mx-auto px-6 pt-6 max-w-7xl flex flex-row">
+        <div class="relative w-3/5">
+            <img class="relative z-10 block left-3 bottom-0" src="~/images/Contact-Image.svg" alt="Alternate Text" />
+            <img class="absolute bottom-0 z-2 right-45" src="~/images/Dots.svg" alt="Alternate Text" />
+            <img class="absolute z-5 bottom-0 left-2"  src="~/images//Bg-img.svg" alt="Alternate Text" />
+        </div>
+        <div class="text-primary flex flex-col gap-y-6 w-2/5 justify-center">
+            <h2 class="text-[2rem] text-primary font-bold">Let us know about your next project</h2>
+
+            <div class="flex flex-col gap-y-1">
+                <p class="font-bold text-primary"><i class="fa-solid fa-location-pin text-secondary"></i> Office location</p>
+                <p>@contactAdress</p>
+            </div>
+            <div class="flex flex-col gap-y-1">
+                <p class="font-bold text-primary"><i class="fa-solid fa-phone text-secondary"></i> Phone number</p>
+                <p>@companyNumber</p>
+            </div>
+            <div class="flex flex-col gap-y-1">
+                <p class="font-bold text-primary"><i class="fa-regular fa-envelope text-secondary"></i> Email address</p>
+                <p>@companyEmail</p>
+            </div>
+        </div>
+    </div>
+</section>

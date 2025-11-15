@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.InfoCard)Model.Content;
+}
+
+<div class="flex flex-col gap-4">
+    <h2 class="text-primary text-[1.375rem] font-semibold">@content.InfoTitle</h2>
+    <img src="@content.InfoImage?.Url()"/>
+    <p class="text-bodytext text-[0.875rem] font-normal">@content.InfoText</p>
+    <div class="bg-primary p-6 text-white rounded-md flex flex-col gap-y-1"> 
+        <p class="font-semibold text-[1.5rem] ">How can we help you?</p>
+        <p class="text-sm font-normal">online support 24/7, we are here to help you</p>
+        <div class="bg-white-100 relative text-bodytext p-2 rounded-md mt-2">
+            <input placeholder="E-mail address" value="" class="w-full p-3 italic focus:outline-none focus:border-none" />
+            <i class="fa-regular fa-envelope absolute text-bodytext right-3 top-6"></i>
+        </div>
+    </div>
+</div>

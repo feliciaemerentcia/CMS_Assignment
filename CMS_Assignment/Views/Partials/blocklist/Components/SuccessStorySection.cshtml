@@ -1,0 +1,34 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.SuccessStorySection)Model.Content;
+}
+
+<section class="bg-no-repeat bg-primary pt-20 pb-[30rem] relative overflow-visible 
+                [background-image:url('/images/Dot-map.svg')]
+                [background-position:50%_5rem]">
+    <div class="flex flex-col max-w-7xl mx-auto items-center">
+        <div class="flex flex-col items-center mb-15">
+            <h2 class="text-[.875rem] text-secondary font-bold uppercase">@content.SuccessLabel</h2>
+            <div class="rte-white">@Html.Raw(@content.SuccessTitel)</div>
+        </div>
+        <div class="flex flex-row gap-x-10 px-25 items-start justify-center w-full"> 
+            <div class="flex flex-col items-center flex-1 text-white-100 font-semibold">
+                <span class="text-[4.5rem] text-secondary">@content.SuccessTotalCustomers</span>
+                <p class="text-white font-semibold">@content.SuccessCustomersText</p>
+            </div>
+            <div class="flex flex-col items-center flex-1 text-white-100 font-semibold">
+                <span class="text-[4.5rem] text-secondary">@content.SuccessTotalProjects</span>
+                <p>@content.SuccessProjectsText</p>
+            </div>
+            <div class="flex flex-col items-center flex-1 text-white-100 font-semibold">
+                <span class="text-[4.5rem] text-secondary">@content.SuccessTotalCustomers</span>
+                <p>@content.SuccessBranchesText</p>
+            </div>
+        </div>
+    </div>
+    @if (content.SuccessImage != null)
+    {
+        <img src="@content.SuccessImage.Url()" alt="" class="absolute -bottom-35 left-1/2 -translate-x-1/2 z-999 " />
+    }
+</section>

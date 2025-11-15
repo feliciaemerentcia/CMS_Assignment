@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var rootContent = Umbraco.ContentAtRoot();
+    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+    var companyName = siteSettings?.SiteName;
+}
+
+<footer class="bg-dark text-bodytext mt-auto">
+    <div class="max-w-7xl mx-auto px-2 py-4">
+        <p class="text-xs">
+            © @companyName. All Rights Reserved. Credits to
+            <span class="text-secondary">Themesflat</span>
+        </p>
+    </div>
+</footer>

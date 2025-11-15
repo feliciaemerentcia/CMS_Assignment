@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ServiceDetail>
+@{
+	Layout = "mainLayout.cshtml";
+}
+
+<partial name="Partials/Layout/_PageBanner" model="(IBanner)Model" />
+
+<section class="py-16">
+	<div class="max-w-7xl mx-auto px-4 flex flex-col">
+		<div class="flex flex-row justify-between">
+			
+			<aside class="w-3/12 flex flex-col gap-4">
+				@Html.GetBlockListHtml(Model.ServiceDetailAsides)
+			</aside>
+
+			<div class="block w-px bg-border-gray"></div>
+			
+			<div class="w-8/12 flex flex-col gap-2">
+				<div class="rte">@Html.Raw(Model.ServiceDetailBody)</div>
+			</div>
+			 
+		</div>
+		<div class="flex flex-col gap-y-2 p-2 mt-20 text-bodytext">
+			<h3 class="text-primary font-bold text-[2rem]">Have a question ?</h3>
+			<div class="flex flex-row gap-x-2">
+				<input placeholder="Name" value="" class="border border-border-gray w-full p-3 italic focus:outline-none rounded-md" />
+				<input placeholder="Email" value="" class="border border-border-gray w-full p-3 italic focus:outline-none rounded-md" />
+			</div>
+			<input placeholder="Question" value="" class=" border border-border-gray w-full p-3 pb-25 italic focus:outline-none rounded-md" />
+			<button class="bg-primary text-white py-3 px-10 no-underline rounded cursor-pointer self-start font-bold">Submit</button>
+		</div>
+	</div>
+</section>
+
+<partial name="Partials/Layout/_ContactInfoLayout" />

@@ -1,0 +1,38 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.ReviewSection)Model.Content;
+}
+
+<section class="bg-white-100 relative overflow-hidden"> 
+    <div class="flex flex-row max-w-7xl mx-auto">
+        <div class="flex-1 text-bodytext flex flex-col gap-y-1 py-4 pl-2 pr-15 max-w-7xl justify-center">
+            <h2 class="text-[.875rem] text-secondary font-bold uppercase">@content.ReviewLabel</h2>
+            <div class="rte mb-3">@Html.Raw(@content.ReviewTitle)</div>
+            <p class="text-xs text-bodytext">@content.ReviewText</p>
+            
+            <div class="flex flex-row gap-x-1 my-3">
+                @for (var i = 0; i < 5; i++)
+                {
+                    if (i < content.ReviewRating)
+                    {
+                        <i class="fa-solid fa-star"></i>
+                    } else
+                    {
+                        <i class="fa-regular fa-star"></i>
+                    }
+                }
+            </div>
+
+            <p>@content.ReviewerName</p>
+            <p>@content.ReviewerTitle</p>
+        </div>
+        <div class="flex-1 h-[500px]">
+            @if (content.ReviewImage != null)
+            {
+                <img src="@content.ReviewImage.Url()" alt="" class="w-full h-full object-cover" />
+            }
+        </div>
+    </div>
+</section>
+
